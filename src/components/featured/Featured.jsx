@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./featured.css";
+import "./Featured.css";
 import { useNavigate } from "react-router-dom";
 
 export const Featured = () => {
