@@ -1,10 +1,10 @@
 import React from "react";
 import "./Gig.css";
-import { Slider } from "infinite-react-carousel/lib";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { Link, useParams } from "react-router-dom";
 import Reviews from "../../components/reviews/Reviews";
+import Slider from "react-slick";
 
 const Gig = () => {
   const { id } = useParams();
@@ -30,6 +30,14 @@ const Gig = () => {
       }),
     enabled: !!userId,
   });
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    arrows: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <div className="gig">
       {isLoading ? (
@@ -67,7 +75,7 @@ const Gig = () => {
                 )}
               </div>
             )}
-            <Slider slidesToShow={1} arrowsScroll={1} className="slider">
+            <Slider {...sliderSettings} className="slider">
               {data.images.map((img) => (
                 <img key={img} src={img} alt="" />
               ))}

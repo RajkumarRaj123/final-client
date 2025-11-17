@@ -1,14 +1,17 @@
-import React, { Children } from "react";
 import "./Slide.css";
-import { Slider } from "infinite-react-carousel";
+import Slider from "react-slick";
 
 export const Slide = ({ children, slidesToShow, arrowsScroll }) => {
+  const settings = {
+    slidesToShow: slidesToShow || 3,
+    slidesToScroll: arrowsScroll || 1,
+    infinite: true,
+    arrows: true,
+  };
   return (
     <div className="slide">
       <div className="container">
-        <Slider slidesToShow={slidesToShow} arrowsScroll={arrowsScroll}>
-          {children}
-        </Slider>
+        <Slider {...settings}>{children}</Slider>
       </div>
     </div>
   );
