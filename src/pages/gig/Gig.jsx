@@ -1,6 +1,6 @@
 import React from "react";
 import "./Gig.css";
-import { Slider } from "infinite-react-carousel/lib";
+import Slider from "infinite-react-carousel";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
@@ -53,7 +53,7 @@ function Gig() {
               <div className="user">
                 <img
                   className="pp"
-                  src={dataUser.img && "/noavatar.jpg"}
+                  src={dataUser?.img || "/noavatar.jpg"}
                   alt=""
                 />
                 <span>{dataUser.username}</span>
@@ -62,7 +62,7 @@ function Gig() {
                     {Array(Math.round(data.totalStars / data.starNumber))
                       .fill()
                       .map((item, i) => (
-                        <img src="star.png" alt="" key={i} />
+                        <img src="/star.png" alt="" key={i} />
                       ))}
                     <span>{Math.round(data.totalStars / data.starNumber)}</span>
                   </div>
@@ -84,7 +84,7 @@ function Gig() {
               <div className="seller">
                 <h2>About The Seller</h2>
                 <div className="user">
-                  <img src={dataUser.img && "/noavatar.jpg"} alt="" />
+                  <img src={dataUser?.img || "/noavatar.jpg"} alt="" />
                   <div className="info">
                     <span>{dataUser.username}</span>
                     {!isNaN(data.totalStars / data.starNumber) && (
