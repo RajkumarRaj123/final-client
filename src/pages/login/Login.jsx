@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./Login.css";
 import newRequest from "../../utils/newRequest";
 
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,6 +18,8 @@ const Login = () => {
         username,
         password,
       });
+      console.log(res.data);
+
       localStorage.setItem("currentUser", JSON.stringify(res.data));
       navigate("/");
     } catch (err) {
@@ -44,7 +47,7 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
-        {error && error}
+        {error && error.message}
       </form>
     </div>
   );

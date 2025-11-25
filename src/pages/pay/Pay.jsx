@@ -26,7 +26,7 @@ const Pay = () => {
       }
     };
     makeRequest();
-  }, []);
+  }, [id]);
 
   const appearance = {
     theme: "stripe",

@@ -1,12 +1,12 @@
 import React from "react";
 import "./Gig.css";
+import { Slider } from "infinite-react-carousel/lib";
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
-import { Link, useParams } from "react-router-dom";
 import Reviews from "../../components/reviews/Reviews";
-import Slider from "react-slick";
 
-const Gig = () => {
+function Gig() {
   const { id } = useParams();
 
   const { isLoading, error, data } = useQuery({
@@ -16,6 +16,7 @@ const Gig = () => {
         return res.data;
       }),
   });
+
   const userId = data?.userId;
 
   const {
@@ -31,19 +32,12 @@ const Gig = () => {
     enabled: !!userId,
   });
 
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    arrows: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
   return (
     <div className="gig">
       {isLoading ? (
         "loading"
       ) : error ? (
-        "something went wrong"
+        "Something went wrong!"
       ) : (
         <div className="container">
           <div className="left">
@@ -54,7 +48,7 @@ const Gig = () => {
             {isLoadingUser ? (
               "loading"
             ) : errorUser ? (
-              "something went wrong"
+              "Something went wrong!"
             ) : (
               <div className="user">
                 <img
@@ -68,14 +62,14 @@ const Gig = () => {
                     {Array(Math.round(data.totalStars / data.starNumber))
                       .fill()
                       .map((item, i) => (
-                        <img src="/star.png" alt="" key={i} />
+                        <img src="star.png" alt="" key={i} />
                       ))}
                     <span>{Math.round(data.totalStars / data.starNumber)}</span>
                   </div>
                 )}
               </div>
             )}
-            <Slider {...sliderSettings} className="slider">
+            <Slider slidesToShow={1} arrowsScroll={1} className="slider">
               {data.images.map((img) => (
                 <img key={img} src={img} alt="" />
               ))}
@@ -85,7 +79,7 @@ const Gig = () => {
             {isLoadingUser ? (
               "loading"
             ) : errorUser ? (
-              "something went wrong"
+              "Something went wrong!"
             ) : (
               <div className="seller">
                 <h2>About The Seller</h2>
@@ -141,17 +135,17 @@ const Gig = () => {
           <div className="right">
             <div className="price">
               <h3>{data.shortTitle}</h3>
-              <h2>{data.price}</h2>
+              <h2>$ {data.price}</h2>
             </div>
             <p>{data.shortDesc}</p>
             <div className="details">
               <div className="item">
-                <img src="/clock.png" alt="" />
-                <span>{data.deliveryDate}</span>
+                <img src="/img/clock.png" alt="" />
+                <span>{data.deliveryDate} Days Delivery</span>
               </div>
               <div className="item">
-                <img src="/recycle.png" alt="" />
-                <span>{data.revisionNumber}</span>
+                <img src="/img/recycle.png" alt="" />
+                <span>{data.revisionNumber} Revisions</span>
               </div>
             </div>
             <div className="features">
@@ -170,6 +164,6 @@ const Gig = () => {
       )}
     </div>
   );
-};
+}
 
 export default Gig;

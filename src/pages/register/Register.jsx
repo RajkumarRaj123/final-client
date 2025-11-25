@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Register.css";
 import newRequest from "../../utils/newRequest";
 import upload from "../../utils/uploads";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [file, setFile] = useState(null);
@@ -15,7 +15,7 @@ const Register = () => {
     phone: "",
     desc: "",
   });
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setUser((prev) => {
@@ -37,7 +37,7 @@ const Register = () => {
         ...user,
         img: url,
       });
-      navigate("/")
+      navigate("/login");
     } catch (err) {
       console.log(err);
     }
