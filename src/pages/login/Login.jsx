@@ -3,7 +3,6 @@ import { useState } from "react";
 import "./Login.css";
 import newRequest from "../../utils/newRequest";
 
-
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -36,6 +35,7 @@ const Login = () => {
           name="username"
           type="text"
           placeholder="example"
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
 
@@ -44,10 +44,11 @@ const Login = () => {
           name="password"
           type="password"
           placeholder="password"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
-        {error && error.message}
+        {error && error}
       </form>
     </div>
   );

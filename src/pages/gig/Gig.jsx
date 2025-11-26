@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import Reviews from "../../components/reviews/Reviews";
-import Slider from "react-slick";
+import { Slider } from "infinite-react-carousel";
 
 function Gig() {
   const { id } = useParams();
@@ -32,15 +32,6 @@ function Gig() {
     enabled: !!userId,
   });
 
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
-  };
-
   return (
     <div className="gig">
       {isLoading ? (
@@ -62,7 +53,7 @@ function Gig() {
               <div className="user">
                 <img
                   className="pp"
-                  src={dataUser?.img || "/noavatar.jpg"}
+                  src={dataUser.img && "/noavatar.jpg"}
                   alt=""
                 />
                 <span>{dataUser.username}</span>
@@ -78,7 +69,7 @@ function Gig() {
                 )}
               </div>
             )}
-            <Slider {...sliderSettings} className="slider">
+            <Slider slidesToShow={1} arrowsScroll={1} className="slider">
               {data.images.map((img) => (
                 <img key={img} src={img} alt="" />
               ))}
@@ -93,7 +84,7 @@ function Gig() {
               <div className="seller">
                 <h2>About The Seller</h2>
                 <div className="user">
-                  <img src={dataUser?.img || "/noavatar.jpg"} alt="" />
+                  <img src={dataUser.img && "/noavatar.jpg"} alt="" />
                   <div className="info">
                     <span>{dataUser.username}</span>
                     {!isNaN(data.totalStars / data.starNumber) && (
