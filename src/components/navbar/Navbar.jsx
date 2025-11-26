@@ -29,6 +29,7 @@ const Navbar = () => {
     try {
       await newRequest.post("auth/logout");
       localStorage.setItem("currentUser", null);
+      localStorage.removeItem("token");
       navigate("/");
     } catch (error) {
       console.log(error);

@@ -17,9 +17,9 @@ const Login = () => {
         username,
         password,
       });
-      console.log(res.data);
+      console.log(res);
 
-      localStorage.setItem("currentUser", JSON.stringify(res.data));
+      localStorage.setItem("currentUser", JSON.stringify(res.data.info));
       localStorage.setItem("token", res.data.token);
 
 
