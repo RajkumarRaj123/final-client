@@ -1,4 +1,5 @@
-import { Slider } from "infinite-react-carousel";
+
+import Slider from "react-slick";
 import "./Slide.css";
 
 export const Slide = ({ children, slidesToShow, arrowsScroll }) => {
