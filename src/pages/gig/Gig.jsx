@@ -14,13 +14,9 @@ function Gig() {
   const { isLoading, error, data } = useQuery({
     queryKey: ["gig"],
     queryFn: () =>
-      newRequest
-        .get(`/gigs/single/${id}`, {
-          headers: { Authorization: localStorage.getItem("token") },
-        })
-        .then((res) => {
-          return res.data;
-        }),
+      newRequest.get(`/gigs/single/${id}`).then((res) => {
+        return res.data;
+      }),
   });
 
   const userId = data?.userId;
@@ -32,13 +28,9 @@ function Gig() {
   } = useQuery({
     queryKey: ["user"],
     queryFn: () =>
-      newRequest
-        .get(`/users/${userId}`, {
-          headers: { Authorization: localStorage.getItem("token") },
-        })
-        .then((res) => {
-          return res.data;
-        }),
+      newRequest.get(`/users/${userId}`).then((res) => {
+        return res.data;
+      }),
     enabled: !!userId,
   });
 
@@ -72,7 +64,7 @@ function Gig() {
               <div className="user">
                 <img
                   className="pp"
-                  src={dataUser.img && "/noavatar.jpg"}
+                  src={dataUser.img || "/noavatar.jpg"}
                   alt=""
                 />
                 <span>{dataUser.username}</span>
@@ -89,10 +81,10 @@ function Gig() {
               </div>
             )}
             <Slider {...sliderSettings} className="slider">
-              {data.images.map((img) => (
-                <img key={img} src={img} alt="" />
-              ))}
+              {data?.images?.length > 0 &&
+                data.images.map((img, i) => <img key={i} src={img} alt="" />)}
             </Slider>
+
             <h2>About This Gig</h2>
             <p>{data.desc}</p>
             {isLoadingUser ? (
@@ -103,7 +95,7 @@ function Gig() {
               <div className="seller">
                 <h2>About The Seller</h2>
                 <div className="user">
-                  <img src={dataUser.img && "/noavatar.jpg"} alt="" />
+                  <img src={dataUser.img || "/noavatar.jpg"} alt="" />
                   <div className="info">
                     <span>{dataUser.username}</span>
                     {!isNaN(data.totalStars / data.starNumber) && (
