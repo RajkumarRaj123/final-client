@@ -7,9 +7,13 @@ const GigCard = ({ item }) => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["gigUser"],
     queryFn: () =>
-      newRequest.get(`/users/${item.userId}`).then((res) => {
-        return res.data;
-      }),
+      newRequest
+        .get(`/users/${item.userId}`, {
+          headers: { Authorization: localStorage.getItem("token") },
+        })
+        .then((res) => {
+          return res.data;
+        }),
   });
   return (
     <Link to={`/gig/${item._id}`} className="link">

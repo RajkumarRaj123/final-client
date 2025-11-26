@@ -18,7 +18,8 @@ const Gigs = () => {
     queryFn: () =>
       newRequest
         .get(
-          `/gigs${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
+          `/gigs${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`,
+          { headers: { Authorization: localStorage.getItem("token") } }
         )
         .then((res) => {
           return res.data;

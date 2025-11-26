@@ -9,7 +9,7 @@ const Reviews = ({ gigId }) => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["reviews"],
     queryFn: () =>
-      newRequest.get(`/reviews/${gigId}`).then((res) => {
+      newRequest.get(`/reviews/${gigId}`,{headers:{Authorization:localStorage.getItem("token")}}).then((res) => {
         return res.data;
       }),
   });

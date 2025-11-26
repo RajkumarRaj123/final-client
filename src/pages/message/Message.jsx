@@ -13,7 +13,7 @@ const Message = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["messages"],
     queryFn: () =>
-      newRequest.get(`/messages/${id}`).then((res) => {
+      newRequest.get(`/messages/${id}`,{headers:{Authorization:localStorage.getItem("token")}}).then((res) => {
         return res.data;
       }),
   });
