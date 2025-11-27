@@ -21,7 +21,7 @@ const Navbar = () => {
     };
   }, []);
 
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const currentUser = JSON.parse(localStorage.getItem("token"));
 
   const navigate = useNavigate();
 
@@ -53,7 +53,7 @@ const Navbar = () => {
           {!currentUser?.isSeller && <span>Become a Seller</span>}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
-              <img src={currentUser.img && "/noavatar.jpg"} />
+              <img src={currentUser.img || "/noavatar.jpg"} />
               <span>{currentUser?.username}</span>
               {open && (
                 <div className="options">
