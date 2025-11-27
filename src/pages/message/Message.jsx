@@ -13,9 +13,13 @@ const Message = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["messages"],
     queryFn: () =>
-      newRequest.get(`/messages/${id}`,{headers:{Authorization:localStorage.getItem("token")}}).then((res) => {
-        return res.data;
-      }),
+      newRequest
+        .get(`/messages/${id}`, {
+          headers: { Authorization: localStorage.getItem("token") },
+        })
+        .then((res) => {
+          return res.data;
+        }),
   });
 
   const mutation = useMutation({

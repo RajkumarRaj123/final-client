@@ -11,7 +11,7 @@ const Orders = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["orders"],
     queryFn: () =>
-      newRequest.get(`/orders/`,{headers:{Authorization:localStorage.getItem("token")}}).then((res) => {
+      newRequest.get(`/orders/`).then((res) => {
         return res.data;
       }),
   });

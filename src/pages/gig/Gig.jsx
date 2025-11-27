@@ -1,10 +1,17 @@
 import React from "react";
 import "./Gig.css";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import { Navigation, Pagination } from "swiper/modules";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import Reviews from "../../components/reviews/Reviews";
-import Slider from "react-slick";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 function Gig() {
   const { id } = useParams();
@@ -20,6 +27,7 @@ function Gig() {
           return res.data;
         }),
   });
+  console.log(data);
 
   const userId = data?.userId;
 
@@ -40,14 +48,14 @@ function Gig() {
     enabled: !!userId,
   });
 
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
-  };
+  // const sliderSettings = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   arrows: true,
+  // };
 
   return (
     <div className="gig">
@@ -86,11 +94,25 @@ function Gig() {
                 )}
               </div>
             )}
-            <Slider {...sliderSettings} className="slider">
-              {data.images.map((img) => (
-                <img key={img} src={img} alt="" />
-              ))}
-            </Slider>
+            <div className="gigSlider">
+              <Swiper
+                modules={[Navigation, Pagination]}
+                navigation
+                pagination={{ clickable: true }}
+                spaceBetween={20}
+                slidesPerView={1}
+                observer={true}
+                observeParents={true}
+                observerUpdate={true}
+              >
+                {data?.images?.map((img, index) => (
+                  <SwiperSlide key={index}>
+                    <img src={img} alt="slide" />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
             <h2>About This Gig</h2>
             <p>{data.desc}</p>
             {isLoadingUser ? (

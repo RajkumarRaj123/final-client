@@ -6,17 +6,18 @@ import { Slide } from "../../components/Slide/Slide";
 import { cards, projects } from "../../data";
 import CatCard from "../../components/catCard/catCard";
 import ProjectCard from "../../components/projectCard/ProjectCard";
+import { Swiper } from "swiper/react";
 
 const Home = () => {
   return (
     <div className="home">
       <Featured />
       <TrustedBy />
-      <Slide slidesToShow={5} arrowsScroll={5}>
+      <Swiper slidesToShow={5} arrowsScroll={5}>
         {cards.map((card) => (
           <CatCard item={card} key={card.id} />
         ))}
-      </Slide>
+      </Swiper>
       <div className="features ">
         <div className="container">
           <div className="item">
