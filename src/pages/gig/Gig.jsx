@@ -4,8 +4,6 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import Reviews from "../../components/reviews/Reviews";
-import Slider from "react-slick";
-  
 
 function Gig() {
   const { id } = useParams();
@@ -31,13 +29,9 @@ function Gig() {
   } = useQuery({
     queryKey: ["user"],
     queryFn: () =>
-      newRequest
-        .get(`/users/${userId}`, {
-          headers: { Authorization: localStorage.getItem("token") },
-        })
-        .then((res) => {
-          return res.data;
-        }),
+      newRequest.get(`/users/${userId}`).then((res) => {
+        return res.data;
+      }),
     enabled: !!userId,
   });
 
