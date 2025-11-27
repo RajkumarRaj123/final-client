@@ -21,7 +21,7 @@ const Navbar = () => {
     };
   }, []);
 
-  const currentUser = JSON.parse(localStorage.getItem("token"));
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   const navigate = useNavigate();
 
