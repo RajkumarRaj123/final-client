@@ -53,7 +53,7 @@ const Navbar = () => {
           {!currentUser?.isSeller && <span>Become a Seller</span>}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
-              <img src={currentUser.img || "/noavatar.jpg"} />
+              <img src={currentUser.img && "/noavatar.jpg"} />
               <span>{currentUser?.username}</span>
               {open && (
                 <div className="options">
