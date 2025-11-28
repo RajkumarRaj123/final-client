@@ -22,9 +22,9 @@ const Login = () => {
       localStorage.setItem("currentUser", JSON.stringify(res.data.info));
       localStorage.setItem("token", res.data.token);
 
-
       navigate("/");
     } catch (err) {
+      console.log(err.response.data);
       setError(err.response.data);
     }
   };
