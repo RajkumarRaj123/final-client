@@ -18,7 +18,13 @@ const Pay = () => {
     const makeRequest = async () => {
       try {
         const res = await newRequest.post(
-          `/orders/create-payment-intent/${id}`
+          `/orders/create-payment-intent/${id}`,
+          {
+            headers: {
+              Authorization: localStorage.getItem("token"),
+            },
+          }
+          
         );
         setClientSecret(res.data.clientSecret);
       } catch (err) {

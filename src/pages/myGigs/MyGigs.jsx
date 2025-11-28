@@ -12,19 +12,26 @@ const MyGigs = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["myGigs"],
     queryFn: () =>
-      newRequest.get(`/gigs?userId=${currentUser.id}`,{headers:{Authorization:localStorage.getItem("token")}}).then((res) => {
-        return res.data;
-      }),
+      newRequest
+        .get(`/gigs?userId=${currentUser.id}`, {
+          headers: { Authorization: localStorage.getItem("token") },
+        })
+        .then((res) => {
+          return res.data;
+        }),
   });
 
   const mutation = useMutation({
     mutationFn: (id) => {
-      return newRequest.delete(`/gigs/${id}`);
+      return newRequest.delete(`/gigs/${id}`, {
+        headers: { Authorization: localStorage.getItem("token") },
+      });
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["myGigs"]);
     },
   });
+  console.log(data);
 
   const handleDelete = (id) => {
     mutation.mutate(id);
@@ -57,19 +64,17 @@ const MyGigs = () => {
             {data.map((gig) => (
               <tr key={gig._id}>
                 <td>
-                  <img
-                    className="image"
-                    src={gig.cover}
-                    alt=""
-                  />
+                  <img className="image" src={gig.cover} alt="" />
                 </td>
                 <td>{gig.title}</td>
-                <td>
-                  {gig.price}
-                </td>
+                <td>{gig.price}</td>
                 <td>{gig.sales}</td>
                 <td>
-                  <img className="delete" src="./delete.png" onClick={()=>handleDelete(gig._id)}/>
+                  <img
+                    className="delete"
+                    src="./delete.png"
+                    onClick={() => handleDelete(gig._id)}
+                  />
                 </td>
               </tr>
             ))}

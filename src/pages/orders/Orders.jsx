@@ -6,14 +6,20 @@ import { useNavigate } from "react-router-dom";
 
 const Orders = () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  console.log(currentUser);
+
   const navigate = useNavigate();
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["orders"],
     queryFn: () =>
-      newRequest.get(`/orders/`).then((res) => {
-        return res.data;
-      }),
+      newRequest
+        .get(`/orders/`, {
+          headers: { Authorization: localStorage.getItem("token") },
+        })
+        .then((res) => {
+          return res.data;
+        }),
   });
 
   const handleContact = async (order) => {
@@ -21,13 +27,21 @@ const Orders = () => {
     const buyerId = order.buyerId;
     const id = sellerId + buyerId;
     try {
-      const res = await newRequest.get(`/conversations/single/${id}`);
+      const res = await newRequest.get(`/conversations/single/${id}`, {
+        headers: { Authorization: localStorage.getItem("token") },
+      });
       navigate(`/message/${res.data.id}`);
     } catch (err) {
       if (err.response.status === 404) {
-        const res = await newRequest.post(`/conversations/`, {
-          to: currentUser.isSeller ? buyerId : sellerId,
-        });
+        const res = await newRequest.post(
+          `/conversations/`,
+          {
+            headers: { Authorization: localStorage.getItem("token") },
+          },
+          {
+            to: currentUser.isSeller ? buyerId : sellerId,
+          }
+        );
         navigate(`/message/${res.data.id}`);
       }
     }

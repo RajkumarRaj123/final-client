@@ -7,9 +7,13 @@ const Review = ({ review }) => {
   const { isLoading, error, data } = useQuery({
     queryKey: [review.userId],
     queryFn: () =>
-      newRequest.get(`/users/${review.userId}`,{headers:{Authorization:localStorage.getItem("token")}}).then((res) => {
-        return res.data;
-      }),
+      newRequest
+        .get(`/users/${review.userId}`, {
+          headers: { Authorization: localStorage.getItem("token") },
+        })
+        .then((res) => {
+          return res.data;
+        }),
   });
   return (
     <div className="review">

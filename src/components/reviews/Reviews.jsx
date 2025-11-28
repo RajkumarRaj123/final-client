@@ -9,14 +9,24 @@ const Reviews = ({ gigId }) => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["reviews"],
     queryFn: () =>
-      newRequest.get(`/reviews/${gigId}`,{headers:{Authorization:localStorage.getItem("token")}}).then((res) => {
-        return res.data;
-      }),
+      newRequest
+        .get(`/reviews/${gigId}`, {
+          headers: { Authorization: localStorage.getItem("token") },
+        })
+        .then((res) => {
+          return res.data;
+        }),
   });
 
   const mutation = useMutation({
     mutationFn: (review) => {
-      return newRequest.post("/reviews", review);
+      return newRequest.post(
+        "/reviews",
+        {
+          headers: { Authorization: localStorage.getItem("token") },
+        },
+        review
+      );
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["reviews"]);

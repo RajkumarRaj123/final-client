@@ -24,7 +24,9 @@ const Messages = () => {
 
   const mutation = useMutation({
     mutationFn: (id) => {
-      return newRequest.put(`/conversations/${id}`);
+      return newRequest.put(`/conversations/${id}`, {
+        headers: { Authorization: localStorage.getItem("token") },
+      });
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["conversations"]);

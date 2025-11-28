@@ -2,20 +2,27 @@ import React from "react";
 import "./Home.css";
 import { Featured } from "../../components/featured/Featured";
 import { TrustedBy } from "../../components/trustedBy/TrustedBy";
-import { Slide } from "../../components/Slide/Slide";
 import { cards, projects } from "../../data";
 import CatCard from "../../components/catCard/catCard";
 import ProjectCard from "../../components/projectCard/ProjectCard";
-import { Swiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 
 const Home = () => {
   return (
     <div className="home">
       <Featured />
       <TrustedBy />
-      <Swiper slidesToShow={5} arrowsScroll={5}>
+      <Swiper
+        modules={[Navigation]}
+        navigation
+        spaceBetween={5}
+        slidesPerView={5}
+      >
         {cards.map((card) => (
-          <CatCard item={card} key={card.id} />
+          <SwiperSlide key={card.id}>
+            <CatCard item={card} />
+          </SwiperSlide>
         ))}
       </Swiper>
       <div className="features ">
@@ -174,11 +181,18 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Slide slidesToShow={4} arrowsScroll={4}>
+      <Swiper
+        modules={[Navigation]}
+        navigation
+        spaceBetween={10}
+        slidesPerView={4}
+      >
         {projects.map((card) => (
-          <ProjectCard item={card} key={card.id} />
+          <SwiperSlide key={card.id}>
+            <ProjectCard item={card} />
+          </SwiperSlide>
         ))}
-      </Slide>
+      </Swiper>
     </div>
   );
 };
