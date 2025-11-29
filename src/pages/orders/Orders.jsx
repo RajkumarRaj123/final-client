@@ -16,7 +16,7 @@ const Orders = () => {
       newRequest
         .get(`/orders/`, {
           headers: { Authorization: localStorage.getItem("token") },
-        })
+        })  
         .then((res) => {
           return res.data;
         }),
