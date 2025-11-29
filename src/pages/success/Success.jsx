@@ -13,24 +13,25 @@ const Success = () => {
       try {
         await newRequest.put(
           "/orders",
-          { headers: { Authorization: localStorage.getItem("token") } },
           {
             payment_intent,
-          }
+          },
+          { headers: { Authorization: localStorage.getItem("token") } }
         );
 
         setTimeout(() => {
           navigate("/orders");
         }, 5000);
       } catch (err) {
-        console.log(err);
+        console.log("Success Page Error:", err.response?.data || err.message);
       }
     };
     makeRequest();
   }, []);
   return (
-    <div>
-      payment successful. you are redirected to home page. please wait...
+    <div style={{ textAlign: "center", marginTop: "150px", fontSize: "22px" }}>
+      Payment Successful 🎉 <br />
+      Redirecting to your Orders page...
     </div>
   );
 };
