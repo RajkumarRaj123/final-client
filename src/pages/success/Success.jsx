@@ -11,15 +11,9 @@ const Success = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        await newRequest.put(
-          "/orders",
-          {
-            payment_intent,
-          },
-          {
-            headers: { Authorization: localStorage.getItem("token") },
-          }
-        );
+        await newRequest.put("/orders", payment_intent, {
+          headers: { Authorization: localStorage.getItem("token") },
+        });
 
         setTimeout(() => {
           navigate("/orders");
