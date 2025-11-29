@@ -14,14 +14,16 @@ const Success = () => {
         await newRequest.put(
           "/orders",
           {
-            payment_intent,
+            headers: { Authorization: localStorage.getItem("token") },
           },
-          { headers: { Authorization: localStorage.getItem("token") } }
+          {
+            payment_intent,
+          }
         );
 
         setTimeout(() => {
           navigate("/orders");
-        }, 5000);
+        }, 2000);
       } catch (err) {
         console.log("Success Page Error:", err.response?.data || err.message);
       }
