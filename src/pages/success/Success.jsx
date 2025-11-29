@@ -11,9 +11,13 @@ const Success = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        await newRequest.put("/orders", {
-          payment_intent,
-        });
+        await newRequest.put(
+          "/orders",
+          { headers: { Authorization: localStorage.getItem("token") } },
+          {
+            payment_intent,
+          }
+        );
 
         setTimeout(() => {
           navigate("/orders");
