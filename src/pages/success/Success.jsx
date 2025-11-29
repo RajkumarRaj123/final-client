@@ -14,10 +14,10 @@ const Success = () => {
         await newRequest.put(
           "/orders",
           {
-            headers: { Authorization: localStorage.getItem("token") },
+            payment_intent,
           },
           {
-            payment_intent,
+            headers: { Authorization: localStorage.getItem("token") },
           }
         );
 
