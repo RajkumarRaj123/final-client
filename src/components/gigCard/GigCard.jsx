@@ -5,7 +5,7 @@ import newRequest from "../../utils/newRequest";
 
 const GigCard = ({ item }) => {
   const { isLoading, error, data } = useQuery({
-    queryKey: ["gigUser"],
+    queryKey: ["gigUser", item.userId],
     queryFn: () =>
       newRequest
         .get(`/users/${item.userId}`, {
@@ -26,7 +26,7 @@ const GigCard = ({ item }) => {
             "something went wrong"
           ) : (
             <div className="user">
-              <img src={data.img && "/noavatar.jpg"} alt="user avatar" />
+              <img src={data.img || "/noavatar.jpg"} alt="user avatar" />
               <span>{data.username}</span>
             </div>
           )}

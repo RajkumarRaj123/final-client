@@ -69,7 +69,7 @@ function Gig() {
               <div className="user">
                 <img
                   className="pp"
-                  src={dataUser.img && "/noavatar.jpg"}
+                  src={dataUser.img || "/noavatar.jpg"}
                   alt=""
                 />
                 <span>{dataUser.username}</span>
@@ -114,7 +114,7 @@ function Gig() {
               <div className="seller">
                 <h2>About The Seller</h2>
                 <div className="user">
-                  <img src={dataUser.img && "/noavatar.jpg"} alt="" />
+                  <img src={dataUser.img || "/noavatar.jpg"} alt="" />
                   <div className="info">
                     <span>{dataUser.username}</span>
                     {!isNaN(data.totalStars / data.starNumber) && (

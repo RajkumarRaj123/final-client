@@ -28,7 +28,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await newRequest.post("auth/logout");
-      localStorage.setItem("currentUser", null);
+      localStorage.removeItem("currentUser");
       localStorage.removeItem("token");
       navigate("/");
     } catch (error) {
@@ -53,7 +53,7 @@ const Navbar = () => {
           {!currentUser?.isSeller && <span>Become a Seller</span>}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
-              <img src={currentUser.img && "/noavatar.jpg"} />
+              <img src={currentUser.img || "/noavatar.jpg"} />
               <span>{currentUser?.username}</span>
               {open && (
                 <div className="options">
