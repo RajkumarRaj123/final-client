@@ -27,9 +27,11 @@ const Message = () => {
       return newRequest.post(
         `/messages`,
         {
-          headers: { Authorization: localStorage.getItem("token") },
+          message,
         },
-        message
+        {
+          headers: { Authorization: localStorage.getItem("token") },
+        }
       );
     },
     onSuccess: () => {
