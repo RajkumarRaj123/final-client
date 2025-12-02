@@ -6,13 +6,13 @@ This README explains how to set up, run, and deploy the **Frontend** of the Free
 
 ## 🚀 Tech Stack
 
-* **React (v18)**
-* **Vite**
-* **TailwindCSS**
-* **React Router DOM**
-* **TanStack React Query**
-* **Axios**
-* **Stripe (React-Stripe-JS)**
+- **React (v18)**
+- **Vite**
+- **TailwindCSS**
+- **React Router DOM**
+- **TanStack React Query**
+- **Axios**
+- **Stripe (React-Stripe-JS)**
 
 ---
 
@@ -155,7 +155,7 @@ Use StripeProvider in your app:
 
 ```jsx
 <Elements stripe={loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)}>
-   <PaymentPage />
+  <PaymentPage />
 </Elements>
 ```
 
@@ -182,12 +182,12 @@ Upload the `dist/` folder or connect GitHub to Netlify.
 
 ### Netlify settings:
 
-* Build Command: `npm run build`
-* Publish Directory: `dist`
-* Environment Variables:
+- Build Command: `npm run build`
+- Publish Directory: `dist`
+- Environment Variables:
 
-  * `VITE_API_URL=https://your-backend-url/api`
-  * `VITE_STRIPE_PUBLIC_KEY=your_key`
+  - `VITE_API_URL=https://your-backend-url/api`
+  - `VITE_STRIPE_PUBLIC_KEY=your_key`
 
 ---
 
@@ -197,8 +197,8 @@ Upload the `dist/` folder or connect GitHub to Netlify.
 
 Fix:
 
-* Remove unused/unmaintained packages like `infinite-react-carousel`.
-* Use alternative sliders (Swiper, Keen-slider).
+- Remove unused/unmaintained packages like `infinite-react-carousel`.
+- Use alternative sliders (Swiper, Keen-slider).
 
 ---
 
