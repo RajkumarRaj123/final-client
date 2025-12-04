@@ -5,6 +5,7 @@ const newRequest = axios.create({
 
   withCredentials: true,
   headers: {
+    "Content-Type": "application/json",
     Authorization: localStorage.getItem("token"),
   },
 });

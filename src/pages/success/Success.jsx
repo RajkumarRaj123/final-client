@@ -25,7 +25,7 @@ const Success = () => {
           navigate("/orders");
         }, 2000);
       } catch (err) {
-        console.log("Success Page Error:", err.response?.data || err.message);
+        console.log("Success Page Error:", err);
       }
     };
     makeRequest();

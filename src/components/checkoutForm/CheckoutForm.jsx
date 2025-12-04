@@ -60,7 +60,7 @@
         elements,
         confirmParams: {
           // Make sure to change this to your payment completion page
-          return_url: "http://localhost:5173/success",
+          return_url: "https://bucolic-frangollo-962bd0.netlify.app/success",
         },
       });
 
