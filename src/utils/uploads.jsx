@@ -6,7 +6,7 @@ const upload = async (file) => {
   data.append("upload_preset", "fiverr");
   try {
     const res = await newRequest.post(
-      "https://api.cloudinary.com/v1_1/dfb3cxoyi/image/upload",
+      "http://api.cloudinary.com/v1_1/dfb3cxoyi/image/upload",
       data
     );
     console.log(res.data);
