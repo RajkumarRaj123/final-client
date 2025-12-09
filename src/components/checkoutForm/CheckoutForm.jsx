@@ -49,8 +49,6 @@ const CheckoutForm = () => {
     e.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
 
@@ -59,8 +57,8 @@ const CheckoutForm = () => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        // Make sure to change this to your payment completion page
-        return_url: "http://localhost:5173/success",
+        return_url:
+          "https://app.netlify.com/projects/bucolic-frangollo-962bd0/success",
       },
     });
 
