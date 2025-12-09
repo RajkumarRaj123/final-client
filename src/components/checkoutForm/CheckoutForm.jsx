@@ -57,8 +57,7 @@ const CheckoutForm = () => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url:
-          "https://app.netlify.com/projects/final-project-one/success",
+        return_url: "https://app.netlify.com/final-project-one/success",
       },
     });
 
