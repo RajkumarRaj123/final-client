@@ -23,7 +23,7 @@ const Messages = () => {
 
   const mutation = useMutation({
     mutationFn: (id) => {
-      return newRequest.put(`/conversations/${id}`, {
+      return newRequest.put(`/conversations/${id}`, data, {
         headers: { Authorization: localStorage.getItem("token") },
       });
     },

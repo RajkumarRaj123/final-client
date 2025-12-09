@@ -1,4 +1,3 @@
-import React from "react";
 import "./Message.css";
 import { Link, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -24,15 +23,9 @@ const Message = () => {
 
   const mutation = useMutation({
     mutationFn: (message) => {
-      return newRequest.post(
-        `/messages`,
-        {
-          message,
-        },
-        {
-          headers: { Authorization: localStorage.getItem("token") },
-        }
-      );
+      return newRequest.post(`/messages`, message, {
+        headers: { Authorization: localStorage.getItem("token") },
+      });
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["conversations"]);

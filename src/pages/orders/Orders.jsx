@@ -16,7 +16,7 @@ const Orders = () => {
       newRequest
         .get(`/orders/`, {
           headers: { Authorization: localStorage.getItem("token") },
-        })  
+        })
         .then((res) => {
           return res.data;
         }),
@@ -33,15 +33,9 @@ const Orders = () => {
       navigate(`/message/${res.data.id}`);
     } catch (err) {
       if (err.response.status === 404) {
-        const res = await newRequest.post(
-          `/conversations/`,
-          {
-            headers: { Authorization: localStorage.getItem("token") },
-          },
-          {
-            to: currentUser.isSeller ? buyerId : sellerId,
-          }
-        );
+        const res = await newRequest.post(`/conversations/`, {
+          to: currentUser.isSeller ? buyerId : sellerId,
+        });
         navigate(`/message/${res.data.id}`);
       }
     }
