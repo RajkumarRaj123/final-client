@@ -58,7 +58,7 @@ const CheckoutForm = () => {
       elements,
       confirmParams: {
         return_url:
-          "https://app.netlify.com/projects/bucolic-frangollo-962bd0/success",
+          "https://app.netlify.com/projects/final-project-one/success",
       },
     });
 
