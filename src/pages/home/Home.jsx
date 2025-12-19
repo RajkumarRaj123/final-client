@@ -7,8 +7,11 @@ import CatCard from "../../components/catCard/catCard";
 import ProjectCard from "../../components/projectCard/ProjectCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="home">
       <Featured />
@@ -66,7 +69,9 @@ const Home = () => {
                 alt=""
               />
               <div className="line"></div>
-              <span>Graphics & Design</span>
+              <Link to="/gigs?cat=design">
+                <span>Design</span>
+              </Link>
             </div>
             <div className="item">
               <img
@@ -148,7 +153,7 @@ const Home = () => {
         <div className="container">
           <div className="item">
             <h1>
-              liverr <i>business</i>
+              Fiverr <i>business</i>
             </h1>
             <h1>
               A business solution designed for <i>teams</i>
@@ -171,7 +176,9 @@ const Home = () => {
               <img src="./check.jpg" alt="" />
               Manage teamwork and boost productivity with one powerful workspace
             </div>
-            <button>Explore Liverr Business</button>
+            <button onClick={() => navigate("/business")}>
+              Explore Fiverr Business
+            </button>
           </div>
           <div className="item">
             <img

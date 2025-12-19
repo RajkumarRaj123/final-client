@@ -12,13 +12,11 @@ import Message from "./pages/message/Message";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import "./app.css";
-
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Pay from "./pages/pay/Pay";
 import Success from "./pages/success/Success";
+import Business from "./pages/business/Business";
+import Explore from "./pages/explore/Explore";
 
 function App() {
   const queryClient = new QueryClient();
@@ -86,6 +84,14 @@ function App() {
         {
           path: "/success",
           element: <Success />,
+        },
+        {
+          path: "/business",
+          element: <Business />,
+        },
+        {
+          path: "/explore",
+          element: <Explore />,
         },
       ],
     },

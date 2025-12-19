@@ -1,12 +1,9 @@
-import React from "react";
 import "./Gig.css";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
+
 import { Navigation, Pagination } from "swiper/modules";
-import { Link, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import Reviews from "../../components/reviews/Reviews";
@@ -15,6 +12,8 @@ import "swiper/css/pagination";
 
 function Gig() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["gig"],
@@ -47,6 +46,15 @@ function Gig() {
         }),
     enabled: !!userId,
   });
+
+  const handleContinue = () => {
+    if (!currentUser) {
+      alert("Please login to continue");
+      navigate("/login");
+    } else {
+      navigate(`/pay/${id}`);
+    }
+  };
 
   return (
     <div className="gig">
@@ -186,9 +194,7 @@ function Gig() {
                 </div>
               ))}
             </div>
-            <Link to={`/pay/${id}`}>
-              <button>Continue</button>
-            </Link>
+            <button onClick={handleContinue}>Continue</button>
           </div>
         </div>
       )}

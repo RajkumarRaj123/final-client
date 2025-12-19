@@ -14,11 +14,13 @@ const Gigs = () => {
   const { search } = useLocation();
 
   const { isLoading, error, data, refetch } = useQuery({
-    queryKey: ["gigs"],
+    queryKey: ["gigs", search, sort],
     queryFn: () =>
       newRequest
         .get(
-          `/gigs${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`,
+          `/gigs${search}&min=${minRef.current.value || ""}&max=${
+            maxRef.current.value || ""
+          }&sort=${sort}`,
           { headers: { Authorization: localStorage.getItem("token") } }
         )
         .then((res) => {
@@ -71,11 +73,17 @@ const Gigs = () => {
           </div>
         </div>
         <div className="cards">
-          {isLoading
-            ? "loading"
-            : error
-            ? "something went wrong"
-            : data.map((gig) => <GigCard key={gig._id} item={gig} />)}
+          {isLoading ? (
+            "loading"
+          ) : error ? (
+            "something went wrong"
+          ) : data.length === 0 ? (
+            <p className="noResults">
+              No results found. Try changing budget or category.
+            </p>
+          ) : (
+            data.map((gig) => <GigCard key={gig._id} item={gig} />)
+          )}
         </div>
       </div>
     </div>

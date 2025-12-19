@@ -57,7 +57,7 @@ const CheckoutForm = () => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "https://zippy-shortbread-8d2ad5.netlify.app/success",
+        return_url: "http://localhost:5173/success",
       },
     });
 

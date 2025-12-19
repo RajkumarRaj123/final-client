@@ -6,7 +6,7 @@ export const Featured = () => {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
   const handleSubmit = () => {
-    navigate(`/gigs?search=${input}`);
+    navigate(`/gigs?cat=${input}`);
   };
   return (
     <div className="h-[600px] flex justify-center bg-[#811899] text-white">
@@ -30,6 +30,7 @@ export const Featured = () => {
               />
             </div>
             <button
+              type="submit"
               onClick={handleSubmit}
               className="w-32 h-12 bg-[#6b8a0d] text-white cursor-pointer"
             >

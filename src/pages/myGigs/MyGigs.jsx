@@ -12,20 +12,15 @@ const MyGigs = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["myGigs"],
     queryFn: () =>
-      newRequest
-        .get(`/gigs?userId=${currentUser.id}`, {
-          headers: { Authorization: localStorage.getItem("token") },
-        })
-        .then((res) => {
-          return res.data;
-        }),
+      newRequest.get(`/gigs?userId=${currentUser.id}`).then((res) => {
+        return res.data;
+      }),
   });
+  console.log(data);
 
   const mutation = useMutation({
     mutationFn: (id) => {
-      return newRequest.delete(`/gigs/${id}`, {
-        headers: { Authorization: localStorage.getItem("token") },
-      });
+      return newRequest.delete(`/gigs/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["myGigs"]);

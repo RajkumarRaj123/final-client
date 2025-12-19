@@ -30,6 +30,7 @@ const Navbar = () => {
       await newRequest.post("auth/logout");
       localStorage.removeItem("currentUser");
       localStorage.removeItem("token");
+      localStorage.clear();
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -47,10 +48,11 @@ const Navbar = () => {
           <span className="dot">.</span>
         </div>
         <div className="links">
-          <span>Fiverr busines</span>
-          <span>Explore</span>
-          <span>English</span>
-          {!currentUser?.isSeller && <span>Become a Seller</span>}
+          <Link to="/business">Fiverr busines</Link>
+          <Link to="/explore">Explore</Link>
+          {!currentUser?.isSeller && (
+            <Link to="/register">Become a Seller</Link>
+          )}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
               <img src={currentUser.img || "/noavatar.jpg"} />
@@ -95,11 +97,11 @@ const Navbar = () => {
         <>
           <hr />
           <div className="menu">
-            <Link className="link" to="/">
-              Graphics & Design
+            <Link className="link" to="/gigs?cat=design">
+              Design
             </Link>
-            <Link className="link" to="/">
-              Video & Animation
+            <Link className="link" to="/gigs?cat=web">
+              Web
             </Link>
             <Link className="link" to="/">
               Writing & Translation

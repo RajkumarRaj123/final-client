@@ -20,13 +20,9 @@ const Reviews = ({ gigId }) => {
 
   const mutation = useMutation({
     mutationFn: (review) => {
-      return newRequest.post(
-        "/reviews",
-        {
-          headers: { Authorization: localStorage.getItem("token") },
-        },
-        review
-      );
+      return newRequest.post("/reviews", review, {
+        headers: { Authorization: localStorage.getItem("token") },
+      });
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["reviews"]);
