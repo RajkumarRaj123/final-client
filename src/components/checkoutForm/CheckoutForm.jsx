@@ -57,8 +57,7 @@ const CheckoutForm = () => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url:
-          "https://app.netlify.com/projects/fastidious-tartufo-1f1ab5/success",
+        return_url: "https://fastidious-tartufo-1f1ab5.netlify.app/success",
       },
     });
 

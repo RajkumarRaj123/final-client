@@ -51,7 +51,7 @@ const Navbar = () => {
           <Link to="/business">Fiverr busines</Link>
           <Link to="/explore">Explore</Link>
           {!currentUser?.isSeller && (
-            <Link to="/register">Become a Seller</Link>
+            <Link to="/becomeSeller">Become a Seller</Link>
           )}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>

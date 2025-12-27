@@ -1,0 +1,30 @@
+.becomeSeller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+
+.container h1 {
+  margin-bottom: 15px;
+}
+
+.container p {
+  color: gray;
+  margin-bottom: 25px;
+}
+
+.container button {
+  background-color: #1dbf73;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.container button:hover {
+  background-color: #17a863;
+}

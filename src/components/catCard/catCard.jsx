@@ -1,12 +1,11 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import "./catCard.css";
+import "./CatCard.css";
 
 function CatCard({ item }) {
   return (
     <Link to="/gigs?cat=design">
       <div className="catCard">
-        <img src={item.img} alt="" />
+        {item?.img && <img src={item.img} alt="" />}
         <span className="desc">{item.desc}</span>
         <span className="title">{item.title}</span>
       </div>
