@@ -13,7 +13,7 @@ const Gigs = () => {
 
   const { search } = useLocation();
 
-  const { isLoading, error, data, refetch } = useQuery({
+  const { isLoading, data, refetch } = useQuery({
     queryKey: ["gigs", search, sort],
     queryFn: () =>
       newRequest
@@ -72,17 +72,15 @@ const Gigs = () => {
           </div>
         </div>
         <div className="cards">
-          {isLoading ? (
-            "loading"
-          ) : error ? (
-            "something went wrong"
-          ) : data.length === 0 ? (
-            <p className="noResults">
-              No results found. Try changing budget or category.
-            </p>
-          ) : (
-            data.map((gig) => <GigCard key={gig._id} item={gig} />)
+          {isLoading && <p>Loading...</p>}
+
+          {!isLoading && data?.length === 0 && (
+            <p>No results found for this budget range</p>
           )}
+
+          {!isLoading &&
+            data?.length > 0 &&
+            data.map((gig) => <GigCard key={gig._id} item={gig} />)}
         </div>
       </div>
     </div>

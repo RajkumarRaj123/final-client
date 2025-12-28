@@ -18,13 +18,9 @@ function Gig() {
   const { isLoading, error, data } = useQuery({
     queryKey: ["gig"],
     queryFn: () =>
-      newRequest
-        .get(`/gigs/single/${id}`, {
-          headers: { Authorization: localStorage.getItem("token") },
-        })
-        .then((res) => {
-          return res.data;
-        }),
+      newRequest.get(`/gigs/single/${id}`).then((res) => {
+        return res.data;
+      }),
   });
   console.log(data);
 
