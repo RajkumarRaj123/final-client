@@ -1,3 +1,4 @@
+import React from "react";
 import "./Home.css";
 import { Featured } from "../../components/featured/Featured";
 import { TrustedBy } from "../../components/trustedBy/TrustedBy";
@@ -7,8 +8,6 @@ import ProjectCard from "../../components/projectCard/ProjectCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { Link, useNavigate } from "react-router-dom";
-import "swiper/css";
-import "swiper/css/navigation";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -34,7 +33,7 @@ const Home = () => {
           <div className="item">
             <h1>A whole world of freelance talent at your fingertips</h1>
             <div className="title">
-              <img src="/check.jpg" alt="" />
+              <img src="./check.jpg" alt="" />
               The best for every budget
             </div>
             <p>
@@ -42,7 +41,7 @@ const Home = () => {
               just project-based pricing.
             </p>
             <div className="title">
-              <img src="/check.jpg" alt="" />
+              <img src="./check.jpg" alt="" />
               Dedicated hiring experts
             </div>
             <p>
@@ -50,13 +49,13 @@ const Home = () => {
               to your project’s every need.
             </p>
             <div className="title">
-              <img src="/check.jpg" alt="" />
+              <img src="./check.jpg" alt="" />
               Advanced management tools
             </div>
             <p>Seamlessly integrate freelancers into your team and projects.</p>
           </div>
           <div className="item">
-            <video src="/video1.mp4" controls></video>
+            <video src="./video1.mp4" controls></video>
           </div>
         </div>
       </div>
@@ -164,17 +163,17 @@ const Home = () => {
               dedicated to businesses
             </p>
             <div className="title">
-              <img src="/check.jpg" alt="" />
+              <img src="./check.jpg" alt="" />
               Connect to freelancers with proven business experience
             </div>
 
             <div className="title">
-              <img src="/check.jpg" alt="" />
+              <img src="./check.jpg" alt="" />
               Get matched with the perfect talent by a customer success manager
             </div>
 
             <div className="title">
-              <img src="/check.jpg" alt="" />
+              <img src="./check.jpg" alt="" />
               Manage teamwork and boost productivity with one powerful workspace
             </div>
             <button onClick={() => navigate("/business")}>
