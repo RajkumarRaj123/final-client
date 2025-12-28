@@ -23,7 +23,7 @@ const Home = () => {
         spaceBetween={5}
         slidesPerView={5}
       >
-        {cards?.map((card) => (
+        {cards.map((card) => (
           <SwiperSlide key={card.id}>
             <CatCard item={card} />
           </SwiperSlide>
@@ -195,7 +195,7 @@ const Home = () => {
         spaceBetween={10}
         slidesPerView={4}
       >
-        {projects?.map((card) => (
+        {projects.map((card) => (
           <SwiperSlide key={card.id}>
             <ProjectCard item={card} />
           </SwiperSlide>
