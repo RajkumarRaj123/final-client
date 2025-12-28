@@ -3,7 +3,7 @@ import "./Home.css";
 import { Featured } from "../../components/featured/Featured";
 import { TrustedBy } from "../../components/trustedBy/TrustedBy";
 import { cards, projects } from "../../data";
-import CatCard from "../../components/catCard/catCard";
+import CatCard from "../../components/catCard/CatCard";
 import ProjectCard from "../../components/projectCard/ProjectCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
