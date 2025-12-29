@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Gigs.css";
 import GigCard from "../../components/gigCard/GigCard";
 import newRequest from "../../utils/newRequest";
@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../components/loader/Loader";
 
 const Gigs = () => {
+  const [showLoader, setShowLoader] = useState(true);
   const [sort, setSort] = useState("sales");
   const [open, setOpen] = useState(false);
   const minRef = useRef();
@@ -33,6 +34,15 @@ const Gigs = () => {
     setSort(type);
     setOpen(false);
   };
+
+  useEffect(() => {
+    setShowLoader(true);
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 2000); // 1.5 seconds
+
+    return () => clearTimeout(timer);
+  }, [isLoading, isFetching]);
 
   const apply = () => {
     refetch();
@@ -69,7 +79,7 @@ const Gigs = () => {
           </div>
         </div>
         <div className="cards">
-          {(isLoading || isFetching) && <Loader />}
+          {(isLoading || isFetching) && showLoader && <Loader />}
           {error && <p className="error"> "something went wrong"</p>}
 
           {!isLoading && !isFetching && data?.length === 0 && (
