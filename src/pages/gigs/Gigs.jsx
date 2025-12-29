@@ -14,7 +14,7 @@ const Gigs = () => {
 
   const { search } = useLocation();
 
-  const { isLoading, error, data, refetch } = useQuery({
+  const { isLoading, isFetching, error, data, refetch } = useQuery({
     queryKey: ["gigs", search, sort],
     queryFn: () =>
       newRequest
@@ -69,7 +69,7 @@ const Gigs = () => {
           </div>
         </div>
         <div className="cards">
-          {isLoading && <Loader />}
+          {isLoading && isFetching && <Loader />}
           {error && <p className="error"> "something went wrong"</p>}
 
           {!isLoading && data?.length === 0 && (
@@ -77,6 +77,7 @@ const Gigs = () => {
           )}
 
           {!isLoading &&
+            !isFetching &&
             data?.length > 0 &&
             data.map((gig) => <GigCard key={gig._id} item={gig} />)}
         </div>

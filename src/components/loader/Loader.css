@@ -22,14 +22,4 @@
 }
 
 
-.noResults {
-  text-align: center;
-  font-size: 18px;
-  color: #777;
-  margin-top: 40px;
-}
 
-.error {
-  color: red;
-  text-align: center;
-}
