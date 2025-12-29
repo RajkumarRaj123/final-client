@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./Gigs.css";
 import GigCard from "../../components/gigCard/GigCard";
 import newRequest from "../../utils/newRequest";
@@ -7,7 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../components/loader/Loader";
 
 const Gigs = () => {
-  const [showLoader, setShowLoader] = useState(true);
   const [sort, setSort] = useState("sales");
   const [open, setOpen] = useState(false);
   const minRef = useRef();
@@ -15,18 +14,19 @@ const Gigs = () => {
 
   const { search } = useLocation();
 
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
   const { isLoading, isFetching, error, data, refetch } = useQuery({
     queryKey: ["gigs", search, sort],
-    queryFn: () =>
-      newRequest
-        .get(
-          `/gigs${search}&min=${minRef.current?.value || ""}&max=${
-            maxRef.current?.value || ""
-          }&sort=${sort}`
-        )
-        .then((res) => {
-          return res.data;
-        }),
+    queryFn: async () => {
+      await delay(2000);
+      const res = await newRequest.get(
+        `/gigs${search}&min=${minRef.current?.value || ""}&max=${
+          maxRef.current?.value || ""
+        }&sort=${sort}`
+      );
+      return res.data;
+    },
   });
   console.log(data);
 
@@ -34,15 +34,6 @@ const Gigs = () => {
     setSort(type);
     setOpen(false);
   };
-
-  useEffect(() => {
-    setShowLoader(true);
-    const timer = setTimeout(() => {
-      setShowLoader(false);
-    }, 10000); // 1.5 seconds
-
-    return () => clearTimeout(timer);
-  }, [isLoading, isFetching]);
 
   const apply = () => {
     refetch();
@@ -79,16 +70,16 @@ const Gigs = () => {
           </div>
         </div>
         <div className="cards">
-          {(isLoading || isFetching) && showLoader && <Loader />}
+          {(isLoading || isFetching) && <Loader />}
+
           {error && <p className="error"> "something went wrong"</p>}
 
-          {!isLoading && !isFetching && showLoader && data?.length === 0 && (
+          {!isLoading && data?.length === 0 && (
             <p className="noResults">No results found for this budget range</p>
           )}
 
           {!isLoading &&
             !isFetching &&
-            showLoader &&
             data?.length > 0 &&
             data.map((gig) => <GigCard key={gig._id} item={gig} />)}
         </div>
