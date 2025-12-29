@@ -39,7 +39,7 @@ const Gigs = () => {
     setShowLoader(true);
     const timer = setTimeout(() => {
       setShowLoader(false);
-    }, 2000); // 1.5 seconds
+    }, 10000); // 1.5 seconds
 
     return () => clearTimeout(timer);
   }, [isLoading, isFetching]);
