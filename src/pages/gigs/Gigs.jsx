@@ -82,12 +82,13 @@ const Gigs = () => {
           {(isLoading || isFetching) && showLoader && <Loader />}
           {error && <p className="error"> "something went wrong"</p>}
 
-          {!isLoading && !isFetching && data?.length === 0 && (
+          {!isLoading && !isFetching && showLoader && data?.length === 0 && (
             <p className="noResults">No results found for this budget range</p>
           )}
 
           {!isLoading &&
             !isFetching &&
+            showLoader &&
             data?.length > 0 &&
             data.map((gig) => <GigCard key={gig._id} item={gig} />)}
         </div>
