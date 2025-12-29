@@ -1,9 +1,10 @@
 import { useLocation } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./Gigs.css";
 import GigCard from "../../components/gigCard/GigCard";
 import newRequest from "../../utils/newRequest";
 import { useQuery } from "@tanstack/react-query";
+import Loader from "../../components/loader/Loader";
 
 const Gigs = () => {
   const [sort, setSort] = useState("sales");
@@ -18,8 +19,8 @@ const Gigs = () => {
     queryFn: () =>
       newRequest
         .get(
-          `/gigs${search}&min=${minRef.current.value || ""}&max=${
-            maxRef.current.value || ""
+          `/gigs${search}&min=${minRef.current?.value || ""}&max=${
+            maxRef.current?.value || ""
           }&sort=${sort}`
         )
         .then((res) => {
@@ -32,10 +33,6 @@ const Gigs = () => {
     setSort(type);
     setOpen(false);
   };
-
-  useEffect(() => {
-    refetch();
-  }, [sort]);
 
   const apply = () => {
     refetch();
@@ -72,11 +69,11 @@ const Gigs = () => {
           </div>
         </div>
         <div className="cards">
-          {isLoading && "Loading"}
-          {error && "something went wrong"}
+          {isLoading && <Loader />}
+          {error && <p className="error"> "something went wrong"</p>}
 
           {!isLoading && data?.length === 0 && (
-            <p>No results found for this budget range</p>
+            <p className="noResults">No results found for this budget range</p>
           )}
 
           {!isLoading &&
