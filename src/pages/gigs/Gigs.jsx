@@ -39,7 +39,7 @@ const Gigs = () => {
     if (isLoading || isFetching) {
       setShowLoader(true);
     } else {
-      const timer = setTimeout(() => setShowLoader(false), 1000);
+      const timer = setTimeout(() => setShowLoader(false), 5000);
       return () => clearTimeout(timer);
     }
   }, [isLoading, isFetching]);
@@ -86,10 +86,10 @@ const Gigs = () => {
             <p className="noResults">No results found for this budget range</p>
           )}
 
-          {!isLoading ||
-            (!isFetching &&
-              data?.length > 0 &&
-              data.map((gig) => <GigCard key={gig._id} item={gig} />))}
+          {!isLoading &&
+            !isFetching &&
+            data?.length > 0 &&
+            data.map((gig) => <GigCard key={gig._id} item={gig} />)}
         </div>
       </div>
     </div>
