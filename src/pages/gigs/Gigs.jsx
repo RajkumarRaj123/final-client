@@ -69,7 +69,7 @@ const Gigs = () => {
           </div>
         </div>
         <div className="cards">
-          {isLoading && isFetching && <Loader />}
+          {(isLoading || isFetching) && <Loader />}
           {error && <p className="error"> "something went wrong"</p>}
 
           {!isLoading && data?.length === 0 && (
