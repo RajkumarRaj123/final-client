@@ -39,7 +39,7 @@ const Gigs = () => {
     if (isLoading || isFetching) {
       setShowLoader(true);
     } else {
-      const timer = setTimeout(() => setShowLoader(false), 400);
+      const timer = setTimeout(() => setShowLoader(false), 1000);
       return () => clearTimeout(timer);
     }
   }, [isLoading, isFetching]);
