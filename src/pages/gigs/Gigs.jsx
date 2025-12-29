@@ -13,7 +13,7 @@ const Gigs = () => {
 
   const { search } = useLocation();
 
-  const { isLoading, data, refetch } = useQuery({
+  const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["gigs", search, sort],
     queryFn: () =>
       newRequest
@@ -72,7 +72,8 @@ const Gigs = () => {
           </div>
         </div>
         <div className="cards">
-          {isLoading && <p>Loading...</p>}
+          {isLoading && "Loading"}
+          {error && "something went wrong"}
 
           {!isLoading && data?.length === 0 && (
             <p>No results found for this budget range</p>
