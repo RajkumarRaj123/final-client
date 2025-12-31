@@ -23,9 +23,11 @@ const Home = () => {
         slidesPerView={5}
       >
         {cards.map((card) => (
-          <SwiperSlide key={card.id}>
-            <CatCard item={card} />
-          </SwiperSlide>
+          <Link to={`/gigs?cat=${card.cat}`} key={card.id}>
+            <SwiperSlide key={card.id}>
+              <CatCard item={card} />
+            </SwiperSlide>
+          </Link>
         ))}
       </Swiper>
       <div className="features ">

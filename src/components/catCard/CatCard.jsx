@@ -7,6 +7,7 @@ function CatCard({ item }) {
       <div className="catCard">
         {item?.img && <img src={item.img} alt="" />}
         <span className="desc">{item.desc}</span>
+        <span className="cat">{item.cat}</span>
         <span className="title">{item.title}</span>
       </div>
     </Link>

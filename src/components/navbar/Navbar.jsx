@@ -42,13 +42,13 @@ const Navbar = () => {
       <div className="container">
         <div className="logo">
           <Link to="/">
-            <span className="text">Fiverr</span>
+            <span className="text">Freelancer</span>
           </Link>
 
           <span className="dot">.</span>
         </div>
         <div className="links">
-          <Link to="/business">Fiverr busines</Link>
+          <Link to="/business">Freelancer busines</Link>
           <Link to="/explore">Explore</Link>
           {!currentUser?.isSeller && (
             <Link to="/becomeSeller">Become a Seller</Link>
@@ -98,10 +98,10 @@ const Navbar = () => {
           <hr />
           <div className="menu">
             <Link className="link" to="/gigs?cat=design">
-              Design
+              Web Design
             </Link>
             <Link className="link" to="/gigs?cat=web">
-              Web
+              Word Press
             </Link>
             <Link className="link" to="/">
               Writing & Translation

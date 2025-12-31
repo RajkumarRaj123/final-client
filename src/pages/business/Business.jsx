@@ -4,7 +4,7 @@ const Business = () => {
   return (
     <div className="business">
       <div className="businessContainer">
-        <h1>Fiverr Business</h1>
+        <h1>Freelance Business</h1>
         <p>Scale your business with vetted freelancers and curated services.</p>
 
         <div className="features">
