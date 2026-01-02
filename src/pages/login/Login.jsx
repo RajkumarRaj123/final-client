@@ -18,11 +18,11 @@ const Login = () => {
         password,
       });
       console.log(res);
-
-      localStorage.setItem("currentUser", JSON.stringify(res.data.info));
+      localStorage.clear(); // clear old user
       localStorage.setItem("token", res.data.token);
-
+      localStorage.setItem("currentUser", JSON.stringify(res.data.info));
       navigate("/");
+      window.location.reload();
     } catch (err) {
       setError(err.response.data);
       console.log(err);

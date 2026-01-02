@@ -86,9 +86,14 @@ const Add = () => {
             <label htmlFor="">Category</label>
             <select name="cat" id="cat" onChange={handleChange}>
               <option value="design">Design</option>
+              <option value="word">Word Press</option>
               <option value="web">Web Development</option>
-              <option value="animation">Animation</option>
-              <option value="music">Music</option>
+              <option value="ai">AI</option>
+              <option value="digital">Digital Marketing</option>
+              <option value="music">Music/Audio</option>
+              <option value="style">LifeStyle</option>
+              <option value="data">Data</option>
+              
             </select>
             <div className="images">
               <div className="imagesInput">

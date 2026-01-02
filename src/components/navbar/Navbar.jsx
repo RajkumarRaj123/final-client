@@ -30,7 +30,6 @@ const Navbar = () => {
       await newRequest.post("auth/logout");
       localStorage.removeItem("currentUser");
       localStorage.removeItem("token");
-      localStorage.clear();
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -48,11 +47,8 @@ const Navbar = () => {
           <span className="dot">.</span>
         </div>
         <div className="links">
-          <Link to="/business">Freelancer busines</Link>
+          <Link to="/business">Freelance busines</Link>
           <Link to="/explore">Explore</Link>
-          {!currentUser?.isSeller && (
-            <Link to="/becomeSeller">Become a Seller</Link>
-          )}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
               <img src={currentUser.img || "/noavatar.jpg"} />
@@ -100,32 +96,26 @@ const Navbar = () => {
             <Link className="link" to="/gigs?cat=design">
               Web Design
             </Link>
-            <Link className="link" to="/gigs?cat=web">
+            <Link className="link" to="/gigs?cat=word">
               Word Press
             </Link>
-            <Link className="link" to="/">
-              Writing & Translation
+            <Link className="link" to="/gigs?cat=web">
+              Web Development
             </Link>
-            <Link className="link" to="/">
+            <Link className="link" to="/gigs?cat=ai">
               AI Services
             </Link>
-            <Link className="link" to="/">
+            <Link className="link" to="/gigs?cat=digital">
               Digital Marketing
             </Link>
-            <Link className="link" to="/">
+            <Link className="link" to="/gigs?cat=music">
               Music & Audio
             </Link>
-            <Link className="link" to="/">
-              Programming & Tech
-            </Link>
-            <Link className="link" to="/">
+            <Link className="link" to="/gigs?cat=business">
               Business
             </Link>
-            <Link className="link" to="/">
+            <Link className="link" to="/gigs?cat=style">
               Lifestyle
-            </Link>
-            <Link className="link" to="/">
-              Data
             </Link>
           </div>
           <hr />

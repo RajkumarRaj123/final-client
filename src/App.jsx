@@ -19,7 +19,6 @@ import Business from "./pages/business/Business";
 import Explore from "./pages/explore/Explore";
 import "swiper/css";
 import "swiper/css/navigation";
-import BecomeSeller from "./pages/becomeSeller/BecomeSeller";
 
 function App() {
   const queryClient = new QueryClient();
@@ -95,10 +94,6 @@ function App() {
         {
           path: "/explore",
           element: <Explore />,
-        },
-        {
-          path: "/becomeSeller",
-          element: <BecomeSeller />,
         },
       ],
     },

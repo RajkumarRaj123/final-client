@@ -101,7 +101,7 @@
     .cards {
       .noResults {
         font-size: 18px;
-        color: gray;
+        color: black;
         margin-top: 40px;
       }
 
@@ -111,7 +111,7 @@
       .noResults {
         text-align: center;
         font-size: 18px;
-        color: #777;
+        color: #eee8e8;
         margin-top: 40px;
       }
 
