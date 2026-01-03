@@ -57,7 +57,7 @@ const CheckoutForm = () => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "https://stellular-donut-391f25.netlify.app/success",
+        return_url: "https://final-client11.netlify.app/success",
       },
     });
 
