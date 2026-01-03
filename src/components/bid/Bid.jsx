@@ -18,12 +18,19 @@ const Bid = ({ gig }) => {
     }
 
     try {
-      await newRequest.post("/bids", {
-        gigId: gig._id,
-        sellerId: gig.userId,
-        price,
-        message,
-      });
+      await newRequest.post(
+        "/bids",
+        {
+          headers: { Authorization: localStorage.getItem("token") },
+        },
+        {
+          gigId: gig._id,
+          sellerId: gig.userId,
+          buyerId: user._id,
+          price,
+          message,
+        }
+      );
       alert("Bid placed successfully");
     } catch (err) {
       alert(err.response.data);
