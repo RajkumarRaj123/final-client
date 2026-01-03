@@ -27,13 +27,11 @@ const Bid = ({ gig }) => {
           message,
         },
         {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
+          headers: { Authorization: localStorage.getItem("token") },
         }
       );
 
-      alert("Bid placed successfully");
+      alert("Bid placed successfully ✅");
     } catch (err) {
       console.log(err);
       alert(err.response?.data || "Something went wrong");

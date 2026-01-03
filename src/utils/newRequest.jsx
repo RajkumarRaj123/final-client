@@ -5,7 +5,6 @@ const newRequest = axios.create({
   withCredentials: true,
 });
 
-// 🔥 dynamic token (VERY IMPORTANT)
 newRequest.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
