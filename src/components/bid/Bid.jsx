@@ -21,19 +21,22 @@ const Bid = ({ gig }) => {
       await newRequest.post(
         "/bids",
         {
-          headers: { Authorization: localStorage.getItem("token") },
-        },
-        {
           gigId: gig._id,
           sellerId: gig.userId,
-          buyerId: user._id,
-          price,
+          price: Number(price),
           message,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
         }
       );
+
       alert("Bid placed successfully");
     } catch (err) {
-      alert(err.response.data);
+      console.log(err);
+      alert(err.response?.data || "Something went wrong");
     }
   };
 
