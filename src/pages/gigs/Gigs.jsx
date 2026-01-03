@@ -83,6 +83,7 @@ const Gigs = () => {
             data?.length > 0 &&
             data.map((gig) => <GigCard key={gig._id} item={gig} />)}
         </div>
+        
       </div>
     </div>
   );

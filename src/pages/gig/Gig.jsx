@@ -9,6 +9,7 @@ import newRequest from "../../utils/newRequest";
 import Reviews from "../../components/reviews/Reviews";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Bid from "../../components/bid/Bid";
 
 function Gig() {
   const { id } = useParams();
@@ -191,6 +192,7 @@ function Gig() {
               ))}
             </div>
             <button onClick={handleContinue}>Continue</button>
+            <Bid gig={data} />
           </div>
         </div>
       )}
